@@ -1,6 +1,6 @@
 package cu.uci.apklisupdate
 
-import cu.todus.android.rest.model.response.LastApplicationRelease
+import cu.uci.apklisupdate.model.AppUpdateInfo
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,7 +10,7 @@ import retrofit2.http.Path
  * Email: adrian011494@gmail.com
  */
 interface LastReleaseApi {
-    @GET("https://www.apklis.cu/api/v1/application/{package}/")
-    fun lastRelease(@Path("package") appPackage: String): Single<LastApplicationRelease>
+    @GET("api/v1/application/{package}/")
+    fun lastRelease(@Path("package") appPackage: String): Single<AppUpdateInfo>
 
 }
