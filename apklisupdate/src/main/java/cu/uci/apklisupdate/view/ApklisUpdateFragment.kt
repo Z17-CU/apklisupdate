@@ -63,7 +63,11 @@ class ApklisUpdateFragment : Fragment() {
 
     companion object {
 
-        fun newInstance(updateInfo: AppUpdateInfo, background: Drawable = ColorDrawable(Color.WHITE), actionsColor: Int = Color.BLACK): ApklisUpdateFragment {
+        fun newInstance(
+            updateInfo: AppUpdateInfo,
+            background: Drawable = ColorDrawable(Color.WHITE),
+            actionsColor: Int = Color.BLACK
+        ): ApklisUpdateFragment {
             return ApklisUpdateFragment().apply {
                 this.updateInfo = updateInfo
                 this.background = background
