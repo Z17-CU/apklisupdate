@@ -17,6 +17,34 @@ implementation 'com.github.adrian011494:apklisupdate:$VERSION'
 ```
 ### Usage
 
+* Check current app
 ```kotlin
+ ApklisUpdate.hasAppUpdate(this, callback = object : UpdateCallback {
 
+            override fun onNewUpdate(appUpdateInfo: AppUpdateInfo) {
+
+                //Start info fragment or do what you want.
+                supportFragmentManager.beginTransaction().add(
+                    R.id.container, ApklisUpdateFragment.newInstance(
+                        updateInfo = appUpdateInfo,
+                        actionsColor = ContextCompat.getColor(this@MainActivity, R.color.colorAccent)
+                    )
+                ).commit()
+
+            }
+
+            override fun onOldUpdate(appUpdateInfo: AppUpdateInfo) {
+                Log.d("MainActivity", "onOldUpdate $appUpdateInfo")
+            }
+
+            override fun onError(e: Throwable) {
+                e.printStackTrace()
+            }
+        })
 ```
+* Check external app
+```kotlin
+ApklisUpdate.hasAppUpdate("APP_PACKAGE_NAME", callback = object : UpdateCallback {...})
+```
+### Contributing
+All contributions are welcome!!!
