@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import io.reactivex.schedulers.Schedulers
+import java.lang.Exception
 
 
 object ApklisUpdate {
@@ -26,10 +27,36 @@ object ApklisUpdate {
                 } else {
                     info.versionCode.toLong()
                 }
-                if (versionCode < it.last_release.version_code && info.versionName != it.last_release.version_name)
-                    callback.onNewUpdate(it)
-                else
-                    callback.onOldUpdate(it)
+
+                if (it != null) {
+                    if (versionCode < it.last_release.version_code && info.versionName != it.last_release.version_name)
+                        callback.onNewUpdate(it)
+                    else
+                        callback.onOldUpdate(it)
+                } else
+                    callback.onError(Exception("Not data"))
+            }, {
+                it.printStackTrace()
+                callback.onError(it)
+            })
+
+    }
+
+    @SuppressLint("CheckResult")
+    fun hasAppUpdate(packageName: String, versionCode: Long = 0, callback: UpdateCallback) {
+
+        LastReleaseClient.instance()
+            .lastRelease(packageName)
+            .subscribeOn(Schedulers.newThread())
+            .subscribe({
+
+                if (it != null) {
+                    if (versionCode < it.last_release.version_code)
+                        callback.onNewUpdate(it)
+                    else
+                        callback.onOldUpdate(it)
+                } else
+                    callback.onError(Exception("Not data"))
             }, {
                 it.printStackTrace()
                 callback.onError(it)

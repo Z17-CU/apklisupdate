@@ -11,8 +11,11 @@ import io.reactivex.Single
 
 class LastReleaseClient : RestClient<LastReleaseApi>(LastReleaseApi::class.java) {
 
-    fun lastRelease(appPackage: String): Single<AppUpdateInfo> {
+    fun lastRelease(appPackage: String): Single<AppUpdateInfo?> {
         return mApi.lastRelease(appPackage)
+            .map {
+                it.results.firstOrNull()
+            }
     }
 
     companion object {

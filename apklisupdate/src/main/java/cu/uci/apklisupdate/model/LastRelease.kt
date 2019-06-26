@@ -17,5 +17,5 @@ data class LastRelease(
     var version_sdk: Int,
     var version_sdk_name: String,
     var version_target_sdk: Int,
-    var version_target_sdk_name: Int
+    var version_target_sdk_name: String
 )

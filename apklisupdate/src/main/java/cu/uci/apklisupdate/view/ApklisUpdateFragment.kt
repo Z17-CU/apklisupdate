@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
+import androidx.core.content.IntentCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import cu.uci.apklisupdate.R
@@ -38,13 +40,13 @@ class ApklisUpdateFragment : Fragment() {
         fromApklis.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse("https://www.apklis.cu/es/application/${updateInfo.package_name}/latest")
-            requireContext().startActivity(Intent.createChooser(i, ""))
+            requireContext().startActivity(Intent.createChooser(i, getString(R.string.open_web)))
         }
 
         download.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(updateInfo.last_release.apk_file)
-            requireContext().startActivity(Intent.createChooser(i, ""))
+            requireContext().startActivity(Intent.createChooser(i, getString(R.string.download)))
         }
 
         Picasso.get().load(updateInfo.last_release.icon).into(logo)
@@ -66,7 +68,7 @@ class ApklisUpdateFragment : Fragment() {
         fun newInstance(
             updateInfo: AppUpdateInfo,
             background: Drawable = ColorDrawable(Color.WHITE),
-            actionsColor: Int = Color.BLACK
+            @ColorInt actionsColor: Int = Color.BLACK
         ): ApklisUpdateFragment {
             return ApklisUpdateFragment().apply {
                 this.updateInfo = updateInfo
