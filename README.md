@@ -1,5 +1,5 @@
 # Check app update in [Apklis](https://www.apklis.cu/es/)
-[![](https://jitpack.io/v/adrian011494/apklisupdate.svg)](https://jitpack.io/#adrian011494/apklisupdate)
+[![](https://jitpack.io/v/Z17-CU/apklisupdate.svg)](https://jitpack.io/#Z17-CU/apklisupdate)
 
 ### Installing
 * Step 1. Add the JitPack repository to your build file
@@ -13,7 +13,7 @@ allprojects {
 ```
 * Step 2. Add the dependency
 ```groovy
-implementation 'com.github.adrian011494:apklisupdate:$VERSION'	
+implementation 'com.github.Z17-CU:apklisupdate:$VERSION'	
 ```
 ### Usage
 
