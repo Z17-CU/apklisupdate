@@ -12,7 +12,7 @@ import retrofit2.http.Query
  * Email: adrian011494@gmail.com
  */
 interface LastReleaseApi {
-    @GET("api/v1/application/")
+    @GET("v1/application/")
     fun lastRelease(@Query("package_name") appPackage: String): Single<ApiResponce>
 
 }

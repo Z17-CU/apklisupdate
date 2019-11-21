@@ -28,7 +28,7 @@ abstract class RestClient<T>(
     // http client
     private var mOkHttpClient: OkHttpClient
 
-    private val BASE_URL: String = "https://www.apklis.cu/"
+    private val BASE_URL: String = "https://api.apklis.cu/"
 
     init {
 
