@@ -3,8 +3,8 @@ package cu.uci.apklisupdate
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.lang.Exception
 
 
 object ApklisUpdate {
@@ -14,6 +14,7 @@ object ApklisUpdate {
 
         LastReleaseClient.instance()
             .lastRelease(context.packageName)
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.newThread())
             .subscribe({
 
@@ -47,6 +48,7 @@ object ApklisUpdate {
 
         LastReleaseClient.instance()
             .lastRelease(packageName)
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.newThread())
             .subscribe({
 
