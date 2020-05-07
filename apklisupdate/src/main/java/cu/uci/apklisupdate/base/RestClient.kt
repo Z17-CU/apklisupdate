@@ -3,6 +3,7 @@ package cu.uci.apklisupdate.base
 import cu.uci.apklisupdate.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -33,12 +34,14 @@ abstract class RestClient<T>(
     init {
 
 
-        val userAgentInterceptor = Interceptor { chain ->
-            val original = chain.request()
-            val requestBuilder = original.newBuilder()
-                .header("User-Agent", BuildConfig.APPLICATION_ID)
-            val request = requestBuilder.build()
-            return@Interceptor chain.proceed(request)
+        val userAgentInterceptor = object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val original = chain.request()
+                val requestBuilder = original.newBuilder()
+                    .header("User-Agent", BuildConfig.APPLICATION_ID)
+                val request = requestBuilder.build()
+                return chain.proceed(request)
+            }
         }
 
         mOkHttpClient = OkHttpClient().newBuilder()

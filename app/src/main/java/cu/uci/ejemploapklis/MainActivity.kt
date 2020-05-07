@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import cu.uci.apklisupdate.ApklisUpdate
 import cu.uci.apklisupdate.UpdateCallback
 import cu.uci.apklisupdate.model.AppUpdateInfo
+import cu.uci.apklisupdate.view.ApklisUpdateDialog
 import cu.uci.apklisupdate.view.ApklisUpdateFragment
 
 class MainActivity : AppCompatActivity() {
@@ -30,12 +31,12 @@ class MainActivity : AppCompatActivity() {
                 ).show()
 
                 //Start info fragment or do what you want.
-                //supportFragmentManager.beginTransaction().add(
-                //    R.id.container, ApklisUpdateFragment.newInstance(
-                //        updateInfo = appUpdateInfo,
-                //        actionsColor = ContextCompat.getColor(this@MainActivity, R.color.colorAccent)
-                //    )
-                //).commit()
+                supportFragmentManager.beginTransaction().add(
+                    R.id.container, ApklisUpdateFragment.newInstance(
+                        updateInfo = appUpdateInfo,
+                        actionsColor = ContextCompat.getColor(this@MainActivity, R.color.colorAccent)
+                    )
+                ).commit()
 
             }
 

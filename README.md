@@ -23,6 +23,15 @@ implementation 'com.github.Z17-CU:apklisupdate:$VERSION'
 
             override fun onNewUpdate(appUpdateInfo: AppUpdateInfo) {
 
+                //Start info alert dialog or do what you want.
+                ApklisUpdateDialog(
+                    this@MainActivity,
+                    appUpdateInfo,
+                    ContextCompat.getColor(
+                        this@MainActivity,
+                        R.color.colorAccent)
+                ).show()
+
                 //Start info fragment or do what you want.
                 supportFragmentManager.beginTransaction().add(
                     R.id.container, ApklisUpdateFragment.newInstance(
