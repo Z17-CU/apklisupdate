@@ -1,21 +1,23 @@
 package cu.uci.apklisupdate.model
 
+import com.google.gson.annotations.SerializedName
+
 data class LastRelease(
-    var apk_file: String,
-    var changelog: String,
-    var human_readable_size: String,
-    var icon: String,
-    var id: Int,
-    var permissions: List<Permission>,
-    var `public`: Boolean,
-    var published: String,
-    var screenshots: List<Any>,
-    var sha256: String,
-    var size: Int,
-    var version_code: Int,
-    var version_name: String,
-    var version_sdk: Int,
-    var version_sdk_name: String,
-    var version_target_sdk: Int,
-    var version_target_sdk_name: String
+    @SerializedName("apk_file") var apk_file: String,
+    @SerializedName("changelog") var changelog: String,
+    @SerializedName("human_readable_size") var human_readable_size: String,
+    @SerializedName("icon") var icon: String,
+    @SerializedName("id") var id: Int,
+    @SerializedName("permissions") var permissions: List<Permission>,
+    @SerializedName("public") var `public`: Boolean,
+    @SerializedName("published") var published: String,
+    @SerializedName("screenshots") var screenshots: List<Any>,
+    @SerializedName("sha256") var sha256: String,
+    @SerializedName("size") var size: Int,
+    @SerializedName("version_code") var version_code: Int,
+    @SerializedName("version_name") var version_name: String,
+    @SerializedName("version_sdk") var version_sdk: Int,
+    @SerializedName("version_sdk_name") var version_sdk_name: String,
+    @SerializedName("version_target_sdk") var version_target_sdk: Int,
+    @SerializedName("version_target_sdk_name") var version_target_sdk_name: String
 )
