@@ -1,8 +1,10 @@
 package cu.uci.apklisupdate.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Category(
-    var group: String,
-    var icon: String,
-    var id: Int,
-    var name: String
+    @SerializedName("group") var group: String,
+    @SerializedName("icon") var icon: String,
+    @SerializedName("id") var id: Int,
+    @SerializedName("name") var name: String
 )

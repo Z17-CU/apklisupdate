@@ -30,7 +30,7 @@ object ApklisUpdate {
                 }
 
                 if (it != null) {
-                    if (versionCode < it.last_release.version_code && info.versionName != it.last_release.version_name)
+                    if (versionCode < it.last_release.version_code)
                         callback.onNewUpdate(it)
                     else
                         callback.onOldUpdate(it)

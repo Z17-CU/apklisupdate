@@ -3,6 +3,7 @@ package cu.uci.apklisupdate.view;
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,11 @@ class UpdateFragment : Fragment() {
 
     lateinit var updateInfo: AppUpdateInfo
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(layout(), container, false)
     }
 
@@ -35,7 +40,8 @@ class UpdateFragment : Fragment() {
 
         fromApklis.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse("https://www.apklis.cu/es/application/${updateInfo.package_name}/latest")
+            i.data =
+                Uri.parse("https://www.apklis.cu/application/${updateInfo.package_name}")
             requireContext().startActivity(Intent.createChooser(i, ""))
         }
 

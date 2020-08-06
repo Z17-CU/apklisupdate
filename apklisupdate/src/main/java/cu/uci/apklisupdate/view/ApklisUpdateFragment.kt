@@ -6,11 +6,11 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
-import androidx.core.content.IntentCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import cu.uci.apklisupdate.R
@@ -23,7 +23,11 @@ class ApklisUpdateFragment : Fragment() {
 
     lateinit var updateInfo: AppUpdateInfo
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(layout(), container, false)
     }
 
@@ -39,7 +43,8 @@ class ApklisUpdateFragment : Fragment() {
         title.text = updateInfo.name
         fromApklis.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse("https://www.apklis.cu/es/application/${updateInfo.package_name}/latest")
+            i.data =
+                Uri.parse("https://www.apklis.cu/application/${updateInfo.package_name}")
             requireContext().startActivity(Intent.createChooser(i, getString(R.string.open_web)))
         }
 

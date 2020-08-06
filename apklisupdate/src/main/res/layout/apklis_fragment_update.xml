@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/fragmentView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@android:color/holo_blue_dark">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragmentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@android:color/holo_blue_dark">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -28,7 +27,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:maxHeight="120dp"
-                    android:scaleType="center"/>
+                    android:scaleType="center" />
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/title"
@@ -37,7 +36,7 @@
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    tools:text="Title"/>
+                    tools:text="Title" />
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/version"
@@ -45,14 +44,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textAlignment="center"
-                    tools:text="0.11.20"/>
+                    tools:text="0.11.20" />
 
             <org.sufficientlysecure.htmltextview.HtmlTextView
                     android:id="@+id/changelog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxHeight="250dp"
                     android:layout_margin="8dp"
+                    android:maxHeight="250dp"
                     tools:text="Bla Bla
 
 
@@ -70,7 +69,7 @@
 
 
 
-                    Bla"/>
+                    Bla" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -85,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/update"
-                        android:textAllCaps="true"/>
+                        android:textAllCaps="true" />
 
                 <com.google.android.material.button.MaterialButton
                         android:id="@+id/download"
@@ -94,8 +93,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/download"
-                        android:textAllCaps="true"
-                />
+                        android:textAllCaps="true" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
