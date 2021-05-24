@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +36,9 @@ class ApklisUpdateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (updateInfo.last_release.apk_file == null)
+            download.visibility = View.GONE
 
         changelog.setHtml("${context?.getString(R.string.changelog)}\n${updateInfo.last_release.changelog}")
         version.text = updateInfo.last_release.version_name

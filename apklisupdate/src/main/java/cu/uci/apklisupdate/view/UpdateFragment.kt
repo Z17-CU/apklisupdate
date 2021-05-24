@@ -3,7 +3,6 @@ package cu.uci.apklisupdate.view;
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +34,9 @@ class UpdateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (updateInfo.last_release.apk_file == null)
+            download.visibility = View.GONE
+
         changelog.setHtml("${context?.getString(R.string.changelog)}\n${updateInfo.last_release.changelog}")
         version.text = updateInfo.last_release.changelog
 
@@ -59,7 +61,11 @@ class UpdateFragment : Fragment() {
 
     companion object {
 
-        fun newInstance(updateInfo: AppUpdateInfo, @DrawableRes background: Int = android.R.color.white, @ColorRes actionsColor: Int = android.R.color.black): UpdateFragment {
+        fun newInstance(
+            updateInfo: AppUpdateInfo,
+            @DrawableRes background: Int = android.R.color.white,
+            @ColorRes actionsColor: Int = android.R.color.black
+        ): UpdateFragment {
             return UpdateFragment().apply {
                 this.updateInfo = updateInfo
                 this.background = background

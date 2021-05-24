@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.annotation.ColorInt
 import com.squareup.picasso.Picasso
 import cu.uci.apklisupdate.R
@@ -21,6 +21,9 @@ class ApklisUpdateDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.apklis_dialog_update)
+
+        if (updateInfo.last_release.apk_file == null)
+            download.visibility = View.GONE
 
         changelog.setHtml("${context.getString(R.string.changelog)}\n${updateInfo.last_release.changelog}")
         version.text = updateInfo.last_release.version_name

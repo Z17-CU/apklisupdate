@@ -5,12 +5,9 @@ import cu.uci.apklisupdate.ApklisUpdate
 import cu.uci.apklisupdate.UpdateCallback
 import cu.uci.apklisupdate.model.AppUpdateInfo
 import org.amshove.kluent.mock
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.mockito.Mock
 import org.mockito.Mockito
-
-import org.junit.Assert.*
-import java.lang.Exception
 
 /**
  * Example local unit test, which will execute on the development machine (host).
