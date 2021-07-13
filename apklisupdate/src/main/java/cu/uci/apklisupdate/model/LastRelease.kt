@@ -3,7 +3,7 @@ package cu.uci.apklisupdate.model
 import com.google.gson.annotations.SerializedName
 
 data class LastRelease(
-    @SerializedName("apk_file") var apk_file: String,
+    @SerializedName("apk_file") var apk_file: String?,
     @SerializedName("changelog") var changelog: String,
     @SerializedName("human_readable_size") var human_readable_size: String,
     @SerializedName("icon") var icon: String,
