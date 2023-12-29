@@ -1,7 +1,9 @@
 package cu.uci.apklisupdate.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class Developer(
     @SerializedName("avatar") var avatar: Any,
     @SerializedName("description") var description: String,

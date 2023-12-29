@@ -1,6 +1,6 @@
 package cu.uci.apklisupdate
 
-import cu.uci.apklisupdate.model.ApiResponce
+import cu.uci.apklisupdate.model.ApiResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -11,6 +11,6 @@ import retrofit2.http.Query
  */
 interface LastReleaseApi {
     @GET("v1/application/")
-    fun lastRelease(@Query("package_name") appPackage: String): Single<ApiResponce>
+    fun lastRelease(@Query("package_name") appPackage: String): Single<ApiResponse>
 
 }
