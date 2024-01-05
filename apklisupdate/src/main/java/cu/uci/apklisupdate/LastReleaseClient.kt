@@ -3,6 +3,7 @@ package cu.uci.apklisupdate
 import cu.uci.apklisupdate.base.RestClient
 import cu.uci.apklisupdate.model.AppUpdateInfo
 import io.reactivex.Single
+import retrofit2.await
 
 /**
  * Created by Adrian Arencibia Herrera on 5/29/18.
