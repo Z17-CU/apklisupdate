@@ -1,7 +1,9 @@
 package cu.uci.apklisupdate.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class AppUpdateInfo(
     @SerializedName("categories") var categories: List<Category>,
     @SerializedName("deleted") var deleted: Boolean,

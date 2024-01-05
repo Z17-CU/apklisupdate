@@ -1,7 +1,9 @@
 package cu.uci.apklisupdate.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class LastRelease(
     @SerializedName("apk_file") var apk_file: String?,
     @SerializedName("changelog") var changelog: String,

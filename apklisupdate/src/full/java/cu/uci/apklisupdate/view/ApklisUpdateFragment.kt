@@ -13,10 +13,12 @@ import androidx.annotation.ColorInt
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import cu.uci.apklisupdate.R
+import cu.uci.apklisupdate.databinding.ApklisFragmentUpdateBinding
 import cu.uci.apklisupdate.model.AppUpdateInfo
-import kotlinx.android.synthetic.main.apklis_fragment_update.*
 
 class ApklisUpdateFragment : Fragment() {
+    private var _binding: ApklisFragmentUpdateBinding? = null
+    private val binding get() = _binding!!
 
     fun layout(): Int = R.layout.apklis_fragment_update
 
@@ -26,8 +28,9 @@ class ApklisUpdateFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(layout(), container, false)
+    ): View {
+        _binding = ApklisFragmentUpdateBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,31 +41,31 @@ class ApklisUpdateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (updateInfo.last_release.apk_file == null)
-            download.visibility = View.GONE
+            binding.download.visibility = View.GONE
 
-        changelog.setHtml("${context?.getString(R.string.changelog)}\n${updateInfo.last_release.changelog}")
-        version.text = updateInfo.last_release.version_name
-        title.text = updateInfo.name
-        fromApklis.setOnClickListener {
+        binding.changelog.setHtml("${context?.getString(R.string.changelog)}\n${updateInfo.last_release.changelog}")
+        binding.version.text = updateInfo.last_release.version_name
+        binding.title.text = updateInfo.name
+        binding.fromApklis.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW)
             i.data =
                 Uri.parse("https://www.apklis.cu/application/${updateInfo.package_name}")
             requireContext().startActivity(Intent.createChooser(i, getString(R.string.open_web)))
         }
 
-        download.setOnClickListener {
+        binding.download.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(updateInfo.last_release.apk_file)
             requireContext().startActivity(Intent.createChooser(i, getString(R.string.download)))
         }
 
-        Picasso.get().load(updateInfo.last_release.icon).into(logo)
+        Picasso.get().load(updateInfo.last_release.icon).into(binding.logo)
 
         getView()?.setBackgroundDrawable(background)
 
 
-        fromApklis.setTextColor(actionsColor)
-        download.setTextColor(actionsColor)
+        binding.fromApklis.setTextColor(actionsColor)
+        binding.download.setTextColor(actionsColor)
     }
 
 
