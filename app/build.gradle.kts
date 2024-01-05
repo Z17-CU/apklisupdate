@@ -15,6 +15,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        missingDimensionStrategy("version", "full", "non-view")
     }
     buildTypes {
         getByName("release") {

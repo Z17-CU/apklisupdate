@@ -37,6 +37,19 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    flavorDimensions += "version"
+    productFlavors {
+        create("full") {}
+        create("non-view") {}
+    }
+    publishing {
+        singleVariant("non-viewRelease")
+        multipleVariants("full") {
+            includeBuildTypeValues("debug", "release")
+            includeFlavorDimensionAndValues("version", "full")
+        }
+    }
 }
 
 
@@ -76,13 +89,22 @@ dependencies {
 
 publishing {
     publications {
-        register<MavenPublication>("release") {
+        register<MavenPublication>("full") {
             groupId = "com.github.Z17-CU"
             artifactId = "apklisupdate"
             version = "1.4"
 
             afterEvaluate {
-                from(components["release"])
+                from(components["full"])
+            }
+        }
+        register<MavenPublication>("non-viewRelease") {
+            groupId = "com.github.Z17-CU"
+            artifactId = "apklisupdate"
+            version = "1.4-non-view"
+
+            afterEvaluate {
+                from(components["non-viewRelease"])
             }
         }
     }
